@@ -1,19 +1,14 @@
-# Sri Krishna Yamana — Portfolio
+# Sri Krishna Yamana — Polished Portfolio v2
 
-A free, static portfolio website created from the supplied resume.
+A polished, responsive Cloud Data Engineer portfolio built from the supplied resume.
 
-## Run locally
-Open `index.html` in any browser.
+## Files
+- `index.html`
+- `styles.css`
+- `script.js`
+- `Sri-Krishna-Yamana-Resume.pdf`
 
-## Publish for free
-### GitHub Pages
-1. Create a GitHub repository named `yourusername.github.io`.
-2. Upload `index.html`, `styles.css`, and `script.js`.
-3. In GitHub, open Settings → Pages and enable deployment from the main branch.
-4. Your site will be available at `https://yourusername.github.io`.
+## Publish
+Upload all files to the **root of the GitHub Pages repository**, not inside a folder.
 
-### Netlify / Vercel
-Upload the folder or connect the GitHub repository and deploy as a static site.
-
-## Notes
-The portfolio uses the resume's stated 5+ years of experience and the project dates/roles exactly as supplied.
+The resume download button expects `Sri-Krishna-Yamana-Resume.pdf` to be in the same root folder as `index.html`.

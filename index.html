@@ -3,166 +3,149 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Sri Krishna Yamana — Cloud Data Engineer specializing in Google Cloud Platform, BigQuery, Airflow, SQL and Python.">
+  <meta name="description" content="Sri Krishna Yamana — Cloud Data Engineer specializing in Google Cloud, BigQuery, Airflow, SQL and Python.">
   <title>Sri Krishna Yamana | Cloud Data Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="topline"></div>
   <header class="nav">
-    <a class="brand" href="#top"><span class="brand-mark">SK</span><span>Sri Krishna</span></a>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#skills">Skills</a>
-      <a href="#education">Education</a>
-      <a class="nav-cta" href="#contact">Contact</a>
+    <a class="brand" href="#home"><span class="brand-mark">SK</span><span>Sri Krishna Yamana</span></a>
+    <nav class="nav-links">
+      <a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Expertise</a>
+      <a href="#education">Education</a><a class="nav-cta" href="#contact">Let's talk <span>↗</span></a>
     </nav>
+    <button class="menu" aria-label="Open menu">☰</button>
   </header>
 
-  <main id="top">
-    <section class="hero section">
-      <div class="hero-copy">
+  <main>
+    <section id="home" class="hero shell">
+      <div class="hero-left">
+        <div class="availability"><span class="pulse"></span> Open to opportunities</div>
         <p class="eyebrow">CLOUD DATA ENGINEER · GOOGLE CLOUD</p>
-        <h1>Building reliable data pipelines that turn complex data into useful outcomes.</h1>
-        <p class="lead">
-          Data Engineer with 5+ years of experience designing and building scalable data pipelines
-          on Google Cloud Platform, with expertise in BigQuery, GCS, Airflow, SQL and Python.
-        </p>
-        <div class="actions">
-          <a class="button primary" href="#experience">View experience <span>↗</span></a>
-          <a class="button secondary" href="mailto:yamana.srikrishna14@gmail.com">Get in touch</a>
+        <h1>Engineering data pipelines <em>built to scale.</em></h1>
+        <p class="hero-text">Data Engineer with 5+ years of experience designing and building scalable data pipelines on Google Cloud Platform, with hands-on expertise across BigQuery, GCS, Airflow, SQL and Python.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#experience">Explore my work <span>↓</span></a>
+          <a class="btn btn-light" href="Sri-Krishna-Yamana-Resume.pdf" download>Download resume <span>↓</span></a>
         </div>
-        <div class="quick-facts">
-          <span>BigQuery</span><span>Airflow</span><span>Python</span><span>SQL</span><span>GCP</span>
+        <div class="trust-row">
+          <span>GCP</span><span>BIGQUERY</span><span>AIRFLOW</span><span>PYTHON</span><span>SQL</span>
         </div>
       </div>
-      <div class="hero-card">
-        <div class="status"><span class="dot"></span> Cloud Data Engineering</div>
-        <div class="code-window">
-          <div class="window-top"><i></i><i></i><i></i><span>pipeline.py</span></div>
-          <pre><code><span class="kw">def</span> <span class="fn">build_pipeline</span>():
-    source = <span class="str">"GCS"</span>
-    transform = <span class="str">"Dataflow / Spark"</span>
-    target = <span class="str">"BigQuery"</span>
 
-    <span class="kw">return</span> <span class="fn">reliable</span>(
-        source, transform, target
-    )</code></pre>
+      <div class="pipeline-card">
+        <div class="card-head"><span class="live"><i></i> PIPELINE FLOW</span><span>GCP</span></div>
+        <div class="pipeline">
+          <div class="node"><b>01</b><strong>Sources</strong><small>CSV · JSON · AVRO</small></div>
+          <div class="connector"><span></span></div>
+          <div class="node active"><b>02</b><strong>Transform</strong><small>Dataflow · Spark</small></div>
+          <div class="connector"><span></span></div>
+          <div class="node"><b>03</b><strong>Warehouse</strong><small>BigQuery</small></div>
         </div>
+        <div class="pipeline-footer"><span>Orchestrated with</span><strong>Apache Airflow</strong><span class="check">✓</span></div>
       </div>
     </section>
 
-    <section id="about" class="section two-col">
-      <div>
-        <p class="eyebrow">ABOUT</p>
-        <h2>Data engineering with a production mindset.</h2>
+    <section id="about" class="section shell about">
+      <div class="section-label"><span>01</span> ABOUT</div>
+      <div class="about-main">
+        <h2>From raw data to reliable systems.</h2>
+        <div class="about-copy">
+          <p>I work across ingestion, transformation, orchestration, data quality and production troubleshooting. My experience includes large-scale processing with SQL, Python and PySpark and working with CSV, JSON, Parquet and AVRO data.</p>
+          <p>I also bring hands-on experience with data modeling, performance optimization, Git/GitHub and Agile delivery, with a focus on dependable production workflows and clear collaboration.</p>
+        </div>
       </div>
-      <div class="body-copy">
-        <p>
-          I work across data ingestion, transformation, orchestration, data quality and production
-          troubleshooting. My experience includes large-scale processing with SQL, Python and PySpark,
-          plus hands-on work with CSV, JSON, Parquet and AVRO data.
-        </p>
-        <p>
-          I also bring experience with data modeling, performance optimization, Git/GitHub,
-          Agile delivery and cross-team collaboration.
-        </p>
+      <div class="stats">
+        <div><strong>5+</strong><span>Years experience</span></div>
+        <div><strong>3</strong><span>Career projects</span></div>
+        <div><strong>GCP</strong><span>Cloud platform</span></div>
       </div>
     </section>
 
-    <section id="experience" class="section">
-      <div class="section-heading">
-        <div><p class="eyebrow">EXPERIENCE</p><h2>Professional journey</h2></div>
-        <span class="count">3 projects</span>
-      </div>
+    <section id="experience" class="section shell">
+      <div class="section-label"><span>02</span> EXPERIENCE</div>
+      <div class="section-title-row"><h2>Production experience</h2><p>Data engineering across cloud pipelines, analytics and database systems.</p></div>
 
-      <div class="timeline">
-        <article class="experience-card">
-          <div class="period">NOV 2025 — MAR 2026</div>
-          <div class="role">
-            <h3>Lead Engineer</h3><p>HCL</p>
+      <div class="experience-list">
+        <article class="exp">
+          <div class="exp-meta"><span>2025 — 2026</span><b>HCL</b></div>
+          <div class="exp-content">
+            <div class="role-line"><h3>Lead Engineer</h3><span>Nov 2025 — Mar 2026</span></div>
             <ul>
-              <li>Managed and monitored end-to-end BigQuery data pipelines across RZ, PZ and fact layers.</li>
-              <li>Performed data validation, reconciliation and root-cause analysis for production issues.</li>
-              <li>Automated data quality checks and supported ingestion workflows using Apache Airflow.</li>
+              <li>Managed and monitored end-to-end BigQuery pipelines across RZ, PZ and fact layers.</li>
+              <li>Performed validation, reconciliation and root-cause analysis for production issues and pipeline failures.</li>
+              <li>Automated data-quality checks and supported ingestion workflows using Apache Airflow.</li>
               <li>Investigated missing or delayed fact-table data and coordinated upstream reprocessing.</li>
-              <li>Collaborated with cross-functional teams and maintained pipeline/troubleshooting documentation.</li>
+              <li>Maintained pipeline, data-flow and troubleshooting documentation during KT and transition.</li>
             </ul>
           </div>
         </article>
 
-        <article class="experience-card">
-          <div class="period">NOV 2023 — JAN 2025</div>
-          <div class="role">
-            <h3>Senior Software Engineer</h3><p>HCL</p>
+        <article class="exp">
+          <div class="exp-meta"><span>2023 — 2025</span><b>HCL</b></div>
+          <div class="exp-content">
+            <div class="role-line"><h3>Senior Software Engineer</h3><span>Nov 2023 — Jan 2025</span></div>
             <ul>
-              <li>Developed scripts for reliable transfer of data from Google Cloud Storage to BigQuery.</li>
-              <li>Implemented BigQuery partitioning strategies for performance and data management.</li>
-              <li>Designed GCP data integration solutions using Cloud Storage, Dataflow, Pub/Sub and BigQuery.</li>
+              <li>Built data-transfer scripts from Google Cloud Storage to BigQuery and implemented BigQuery partitioning strategies.</li>
+              <li>Designed GCP data-integration solutions using Cloud Storage, Dataflow, Pub/Sub and BigQuery.</li>
               <li>Worked with Apache Beam, Apache Spark and Google Cloud Dataflow for large-scale processing.</li>
-              <li>Handled CSV, JSON and AVRO formats and created authorized views for controlled data access.</li>
+              <li>Handled CSV, JSON and AVRO formats and created authorized BigQuery views for controlled access.</li>
               <li>Used GitHub for source control and maintained documentation for pipelines, models and architecture.</li>
             </ul>
           </div>
         </article>
 
-        <article class="experience-card">
-          <div class="period">AUG 2019 — OCT 2023</div>
-          <div class="role">
-            <h3>Software Engineer</h3><p>WVAUTOMATIONPRIVATE LIMITED</p>
+        <article class="exp">
+          <div class="exp-meta"><span>2019 — 2023</span><b>WVAUTOMATIONPRIVATE LIMITED</b></div>
+          <div class="exp-content">
+            <div class="role-line"><h3>Software Engineer</h3><span>Aug 2019 — Oct 2023</span></div>
             <ul>
-              <li>Built complex SQL for data retrieval, manipulation and database updates.</li>
-              <li>Designed and optimized tables, indexes and constraints to improve database performance.</li>
-              <li>Analyzed execution plans and implemented query and index optimization strategies.</li>
-              <li>Created logical and physical data models aligned to business requirements.</li>
-              <li>Developed stored procedures, user-defined functions and triggers for business logic.</li>
+              <li>Crafted complex SQL and optimized tables, indexes, constraints and query execution plans.</li>
+              <li>Created logical and physical data models aligned with business requirements.</li>
+              <li>Developed stored procedures, user-defined functions and triggers for database business logic.</li>
               <li>Contributed to GCP big-data architecture using BigQuery, GCS, Dataflow and Airflow.</li>
-              <li>Used Python for data automation, cleansing and transformation workflows.</li>
+              <li>Developed Python automation for data processing, cleansing and transformation.</li>
             </ul>
           </div>
         </article>
       </div>
     </section>
 
-    <section id="skills" class="section">
-      <p class="eyebrow">TECHNICAL EXPERTISE</p>
-      <h2>Tools I work with</h2>
-      <div class="skills-grid">
-        <div class="skill-card"><span class="skill-icon">☁</span><h3>Google Cloud</h3><p>GCS · BigQuery · Airflow · Data Proc · Dataflow · Pub/Sub</p></div>
-        <div class="skill-card"><span class="skill-icon">⌘</span><h3>Data & Processing</h3><p>SQL · Python · PySpark · Apache Beam · Apache Spark</p></div>
-        <div class="skill-card"><span class="skill-icon">▦</span><h3>Data Engineering</h3><p>Data ingestion · Transformation · Orchestration · Data quality · Data modeling</p></div>
-        <div class="skill-card"><span class="skill-icon">◫</span><h3>Engineering Tools</h3><p>Git · GitHub · JIRA · Confluence · Agile</p></div>
-        <div class="skill-card"><span class="skill-icon">◈</span><h3>Formats & Platforms</h3><p>CSV · JSON · Parquet · AVRO · Snowflake · Kafka · Hadoop ecosystem</p></div>
-        <div class="skill-card"><span class="skill-icon">✓</span><h3>Production</h3><p>Validation · Reconciliation · RCA · Troubleshooting · Workflow automation</p></div>
+    <section id="projects" class="section shell expertise">
+      <div class="section-label"><span>03</span> EXPERTISE</div>
+      <div class="section-title-row"><h2>Technical toolkit</h2><p>The technologies and practices reflected in my professional experience.</p></div>
+      <div class="tool-grid">
+        <div class="tool-card featured"><div class="tool-icon">☁</div><h3>Google Cloud</h3><p>GCS, BigQuery, Airflow, Data Proc, Dataflow and Pub/Sub.</p><div class="tags"><span>GCS</span><span>BigQuery</span><span>Dataflow</span></div></div>
+        <div class="tool-card"><div class="tool-icon">⌘</div><h3>Programming</h3><p>SQL, Python and PySpark for data processing, automation and transformation.</p><div class="tags"><span>SQL</span><span>Python</span><span>PySpark</span></div></div>
+        <div class="tool-card"><div class="tool-icon">◇</div><h3>Data Engineering</h3><p>Ingestion, orchestration, data quality, validation, reconciliation and RCA.</p><div class="tags"><span>Airflow</span><span>Quality</span><span>RCA</span></div></div>
+        <div class="tool-card"><div class="tool-icon">▦</div><h3>Processing</h3><p>Apache Beam, Apache Spark and Google Cloud Dataflow for large-scale processing.</p><div class="tags"><span>Beam</span><span>Spark</span><span>Dataflow</span></div></div>
+        <div class="tool-card"><div class="tool-icon">◫</div><h3>Engineering Tools</h3><p>Git, GitHub, JIRA, Confluence and Agile delivery practices.</p><div class="tags"><span>Git</span><span>GitHub</span><span>Agile</span></div></div>
+        <div class="tool-card"><div class="tool-icon">◎</div><h3>Data Formats</h3><p>CSV, JSON, Parquet and AVRO, plus familiarity with Snowflake, Kafka and Hadoop.</p><div class="tags"><span>CSV</span><span>JSON</span><span>AVRO</span></div></div>
       </div>
     </section>
 
-    <section id="education" class="section two-col compact">
-      <div><p class="eyebrow">EDUCATION</p><h2>Academic background</h2></div>
-      <div class="education-card">
-        <div class="degree">B.Sc. Computers</div>
-        <div>Krishna University, Vijayawada</div>
-        <span>2019</span>
-      </div>
+    <section id="education" class="section shell education">
+      <div class="section-label"><span>04</span> EDUCATION</div>
+      <div class="edu-card"><div><span class="edu-year">2019</span><h2>B.Sc. Computers</h2><p>Krishna University · Vijayawada</p></div><div class="edu-mark">BSc</div></div>
     </section>
 
-    <section id="contact" class="section contact">
-      <div>
-        <p class="eyebrow">LET'S CONNECT</p>
-        <h2>Looking for the next opportunity.</h2>
-        <p class="lead">Open to opportunities where cloud data engineering and reliable data platforms can make a meaningful impact.</p>
-      </div>
-      <div class="contact-links">
-        <a href="mailto:yamana.srikrishna14@gmail.com">yamana.srikrishna14@gmail.com <span>↗</span></a>
-        <a href="tel:+918688254158">+91 86882 54158 <span>↗</span></a>
+    <section id="contact" class="contact shell">
+      <div class="contact-inner">
+        <div><p class="eyebrow">05 · CONTACT</p><h2>Let's build something reliable.</h2><p>I'm open to opportunities where cloud data engineering can make a meaningful impact.</p></div>
+        <div class="contact-actions">
+          <a class="contact-link primary-link" href="mailto:yamana.srikrishna14@gmail.com">yamana.srikrishna14@gmail.com <span>↗</span></a>
+          <a class="contact-link" href="tel:+918688254158">+91 86882 54158 <span>↗</span></a>
+          <a class="resume-link" href="Sri-Krishna-Yamana-Resume.pdf" download>Download my resume ↓</a>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <span>© <span id="year"></span> Sri Krishna Yamana</span>
-    <span>Cloud Data Engineer · Google Cloud</span>
-  </footer>
+  <footer class="footer shell"><span>© <span id="year"></span> Sri Krishna Yamana</span><span>Cloud Data Engineer · Google Cloud</span></footer>
   <script src="script.js"></script>
 </body>
 </html>
