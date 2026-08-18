@@ -1,19 +1,11 @@
 # Sri Krishna Yamana — Portfolio
 
-Updated portfolio files.
-
-## Updates
-- Lead Engineer experience now shows **NOV 2025 — PRESENT**.
-- Experience duration is calculated automatically from the current date.
-- Experience and project counters have correct non-JavaScript fallback values (`5+` and `3`).
-- Corrected **Data Proc** to **Dataproc**.
-- Kept the resume PDF and existing site structure/assets unchanged.
-- Kept the pipeline rows/day metric stable instead of artificially increasing it.
-
-## GitHub Pages upload
-Upload all files in this folder to the repository root:
-- `index.html`
-- `script.js`
-- `styles.css`
-- `Sri-Krishna-Yamana-Resume.pdf`
-- `README.md`
+## Final behavior
+- HCL Tech is shown as NOV 2025 — PRESENT.
+- Current-role duration updates automatically every day using calendar-accurate years/months/days.
+- Total career experience updates automatically every day.
+- Experience sections are always visible; they are NOT collapsible.
+- Experience bullets are visible by default with clear bullet markers.
+- Only the floating STAGE indicator is collapsible; clicking it does not affect any page section.
+- Pipeline rows/day counter remains dynamic.
+- Resume link points to the included PDF.

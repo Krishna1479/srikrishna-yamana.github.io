@@ -202,29 +202,43 @@
     const start = new Date(2019, 7, 1); // Aug 1, 2019
 
     function diffParts(from, to) {
-      let months = (to.getFullYear() - from.getFullYear()) * 12 + (to.getMonth() - from.getMonth()) + 1;
-      const cursor = new Date(from.getFullYear(), from.getMonth(), from.getDate());
-      cursor.setMonth(cursor.getMonth() + months - 1);
-      const days = Math.max(0, Math.floor((to - cursor) / 86400000));
-      return { years: Math.floor(months / 12), months: months % 12, days };
+      let years = to.getFullYear() - from.getFullYear();
+      let months = to.getMonth() - from.getMonth();
+      let days = to.getDate() - from.getDate();
+
+      if (days < 0) {
+        months -= 1;
+        days += new Date(to.getFullYear(), to.getMonth(), 0).getDate();
+      }
+      if (months < 0) {
+        years -= 1;
+        months += 12;
+      }
+      return { years, months, days };
     }
 
     function render() {
       const d = diffParts(start, new Date());
       const parts = [];
       if (d.years) parts.push(d.years + "y");
-      parts.push(d.months + "mo");
+      if (d.months) parts.push(d.months + "mo");
       parts.push(d.days + "d");
       totalEl.textContent = parts.join(" ");
     }
 
+    // Re-schedule from the next local midnight so the value changes on the
+    // calendar day boundary (9mo 17d → 9mo 18d), even across DST changes.
+    function scheduleNextUpdate() {
+      const now = new Date();
+      const nextMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+      window.setTimeout(() => {
+        render();
+        scheduleNextUpdate();
+      }, Math.max(1000, nextMidnight - now));
+    }
+
     render();
-    const now = new Date();
-    const nextMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
-    window.setTimeout(() => {
-      render();
-      window.setInterval(render, 86400000);
-    }, Math.max(1000, nextMidnight - now));
+    scheduleNextUpdate();
   })();
 
   /* ---------------- Hero live pipeline animation ---------------- */
@@ -332,37 +346,20 @@
     // Update current-role duration every day without requiring a refresh.
     const hasPresent = jobs.some((job) => (job.getAttribute("data-end") || "").toLowerCase() === "present");
     if (hasPresent) {
-      const now = new Date();
-      const nextMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
-      window.setTimeout(() => {
-        renderAll();
-        window.setInterval(renderAll, 86400000);
-      }, Math.max(1000, nextMidnight - now));
+      function scheduleNextUpdate() {
+        const now = new Date();
+        const nextMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+        window.setTimeout(() => {
+          renderAll();
+          scheduleNextUpdate();
+        }, Math.max(1000, nextMidnight - now));
+      }
+      scheduleNextUpdate();
     }
   })();
 
-  /* ---------------- Experience: compact cards with click-to-expand details ---------------- */
-  (function experienceAccordionModule() {
-    const toggles = $$(".job-toggle");
-    if (!toggles.length) return;
-
-    function setOpen(toggle, open) {
-      const job = toggle.closest(".job");
-      const details = job ? job.querySelector(".job-details") : null;
-      if (!job || !details) return;
-
-      toggle.setAttribute("aria-expanded", String(open));
-      job.classList.toggle("is-open", open);
-      details.hidden = !open;
-    }
-
-    toggles.forEach((toggle) => {
-      toggle.addEventListener("click", () => {
-        const open = toggle.getAttribute("aria-expanded") === "true";
-        setOpen(toggle, !open);
-      });
-    });
-  })();
+  /* ---------------- Experience details are always visible ---------------- */
+  // Experience content stays open. Only the floating stage HUD is collapsible.
 
   /* ---------------- Skills filter ---------------- */
   (function skillsFilterModule() {

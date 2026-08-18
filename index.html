@@ -10,6 +10,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script>
+  (() => {
+    try {
+      const saved = localStorage.getItem("sky-portfolio-theme");
+      const theme = saved === "dark" || saved === "light"
+        ? saved
+        : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      if (theme === "dark") document.documentElement.setAttribute("data-theme", "dark");
+    } catch (e) {}
+  })();
+</script>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -88,11 +99,11 @@
   <div class="section-head"><div><div class="label">· EXPERIENCE</div><h2>Professional experience</h2></div><p>Hands-on work across GCP pipelines, data integration, databases and production support.</p></div>
   <div class="timeline">
     <article class="job" data-start="2025-11-01" data-end="Present">
-      <button class="job-toggle" type="button" aria-expanded="false">
+      <div class="job-toggle" aria-label="Lead Engineer experience">
         <span class="job-meta"><span>NOV 2025 — PRESENT</span><b>HCL Tech</b><span class="job-duration" aria-label="Current role duration"></span></span>
-        <span class="job-summary"><span class="job-title"><strong>Lead Engineer</strong><span>Project #3</span></span><span class="job-chevron" aria-hidden="true">+</span></span>
-      </button>
-      <div class="job-details" hidden>
+        <span class="job-summary"><span class="job-title"><strong>Lead Engineer</strong><span>Project #3</span></span></span>
+      </div>
+      <div class="job-details">
         <ul>
           <li>Managed end-to-end BigQuery pipelines across RZ, PZ and fact layers.</li>
           <li>Performed validation, reconciliation and RCA for production failures.</li>
@@ -102,11 +113,11 @@
       </div>
     </article>
     <article class="job" data-start="2023-11-01" data-end="2025-01-31">
-      <button class="job-toggle" type="button" aria-expanded="false">
+      <div class="job-toggle" aria-label="Senior Software Engineer experience">
         <span class="job-meta"><span>NOV 2023 — JAN 2025</span><b>HCL Tech</b><span class="job-duration" aria-label="Role duration"></span></span>
-        <span class="job-summary"><span class="job-title"><strong>Senior Software Engineer</strong><span>Project #2</span></span><span class="job-chevron" aria-hidden="true">+</span></span>
-      </button>
-      <div class="job-details" hidden>
+        <span class="job-summary"><span class="job-title"><strong>Senior Software Engineer</strong><span>Project #2</span></span></span>
+      </div>
+      <div class="job-details">
         <ul>
           <li>Built GCS-to-BigQuery transfer workflows and partitioning strategies.</li>
           <li>Designed GCP integrations using GCS, Dataflow, Pub/Sub and BigQuery.</li>
@@ -116,11 +127,11 @@
       </div>
     </article>
     <article class="job" data-start="2019-08-01" data-end="2023-10-31">
-      <button class="job-toggle" type="button" aria-expanded="false">
+      <div class="job-toggle" aria-label="Software Engineer experience">
         <span class="job-meta"><span>AUG 2019 — OCT 2023</span><b>WVAUTOMATIONPRIVATE LIMITED</b><span class="job-duration" aria-label="Role duration"></span></span>
-        <span class="job-summary"><span class="job-title"><strong>Software Engineer</strong><span>Project #1</span></span><span class="job-chevron" aria-hidden="true">+</span></span>
-      </button>
-      <div class="job-details" hidden>
+        <span class="job-summary"><span class="job-title"><strong>Software Engineer</strong><span>Project #1</span></span></span>
+      </div>
+      <div class="job-details">
         <ul>
           <li>Developed complex SQL and optimized tables, indexes and query plans.</li>
           <li>Created logical and physical data models for business requirements.</li>
