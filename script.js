@@ -181,47 +181,39 @@
     items.forEach((el) => observer.observe(el));
   })();
 
-  /* ---------------- Count-up stats ---------------- */
-  (function countUpModule() {
-    const targets = $$("[data-count-to]");
-    if (!targets.length) return;
+  /* ---------------- Live experience counter ---------------- */
+  (function experienceCounterModule() {
+    const totalEl = $("#totalExperience");
+    if (!totalEl) return;
 
-    function animateCount(el) {
-      const end = parseFloat(el.getAttribute("data-count-to"));
-      const suffix = el.getAttribute("data-suffix") || "";
-      if (isNaN(end)) return;
-      if (prefersReducedMotion) {
-        el.textContent = end + suffix;
-        return;
-      }
-      const duration = 1100;
-      const start = performance.now();
-      function tick(now) {
-        const progress = Math.min(1, (now - start) / duration);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        el.textContent = Math.round(end * eased) + suffix;
-        if (progress < 1) requestAnimationFrame(tick);
-        else el.textContent = end + suffix;
-      }
-      requestAnimationFrame(tick);
+    // The public resume provides month/year only, so the first day of the
+    // stated start month is used consistently for day-level display.
+    const start = new Date(2019, 7, 1); // Aug 1, 2019
+
+    function diffParts(from, to) {
+      let months = (to.getFullYear() - from.getFullYear()) * 12 + (to.getMonth() - from.getMonth()) + 1;
+      const cursor = new Date(from.getFullYear(), from.getMonth(), from.getDate());
+      cursor.setMonth(cursor.getMonth() + months - 1);
+      const days = Math.max(0, Math.floor((to - cursor) / 86400000));
+      return { years: Math.floor(months / 12), months: months % 12, days };
     }
 
-    if ("IntersectionObserver" in window) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              animateCount(entry.target);
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.6 }
-      );
-      targets.forEach((el) => observer.observe(el));
-    } else {
-      targets.forEach(animateCount);
+    function render() {
+      const d = diffParts(start, new Date());
+      const parts = [];
+      if (d.years) parts.push(d.years + "y");
+      parts.push(d.months + "mo");
+      parts.push(d.days + "d");
+      totalEl.textContent = parts.join(" ");
     }
+
+    render();
+    const now = new Date();
+    const nextMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+    window.setTimeout(() => {
+      render();
+      window.setInterval(render, 86400000);
+    }, Math.max(1000, nextMidnight - now));
   })();
 
   /* ---------------- Hero live pipeline animation ---------------- */
@@ -232,13 +224,13 @@
     const counterEl = $("#rowsCounter");
     if (!nodes.length) return;
 
+    let step = 0;
+
     if (prefersReducedMotion) {
       nodes.forEach((n, i) => n.classList.toggle("highlight", i === 1));
       if (lineFill) lineFill.style.width = "62%";
-      return;
     }
 
-    let step = 0;
     const positions = [4, 50, 92]; // approximate % positions of node centers along the line
     const fillTargets = [18, 62, 96];
 
@@ -248,19 +240,27 @@
       if (packet) packet.style.left = positions[step] + "%";
       step = (step + 1) % nodes.length;
     }
-    advance();
-    let pipelineTimer = setInterval(advance, 2200);
+    if (!prefersReducedMotion) advance();
+    let pipelineTimer = prefersReducedMotion ? null : setInterval(advance, 2200);
 
-    // Static production metric: keep the displayed figure factual and stable.
-    const rowsPerDay = 1284392;
-    if (counterEl) counterEl.textContent = "✓ " + rowsPerDay.toLocaleString() + " rows/day";
+    // Keep the visual pipeline metric dynamic, as in the original design.
+    let rows = 1284392;
+    function updateRows() {
+      rows += Math.floor(Math.random() * 140) + 20;
+      if (counterEl) counterEl.textContent = "✓ " + rows.toLocaleString() + " rows/day";
+    }
+    updateRows();
+    let rowsTimer = setInterval(updateRows, 1400);
 
     // Pause work when tab isn't visible — avoids wasted cycles and battery drain
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) {
-        clearInterval(pipelineTimer);
+        if (pipelineTimer) clearInterval(pipelineTimer);
+        clearInterval(rowsTimer);
       } else {
-        pipelineTimer = setInterval(advance, 2200);
+        if (!prefersReducedMotion) pipelineTimer = setInterval(advance, 2200);
+        updateRows();
+        rowsTimer = setInterval(updateRows, 1400);
       }
     });
   })();
@@ -270,39 +270,53 @@
     const jobs = $$(".job[data-start][data-end]");
     if (!jobs.length) return;
 
-    const MONTHS = {
-      jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5,
-      jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11,
-    };
-
-    function parseMonthYear(str) {
-      const parts = str.trim().toLowerCase().split(/\s+/);
-      if (parts.length !== 2) return null;
-      const m = MONTHS[parts[0].slice(0, 3)];
-      const y = parseInt(parts[1], 10);
-      if (m === undefined || isNaN(y)) return null;
-      return { m, y };
+    function parseDate(value) {
+      if (!value) return null;
+      if (/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+        const [y, m, d] = value.split("-").map(Number);
+        return new Date(y, m - 1, d);
+      }
+      const match = value.trim().match(/^([A-Za-z]{3})\s+(\d{4})$/);
+      if (!match) return null;
+      const months = {jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11};
+      const m = months[match[1].toLowerCase()];
+      return m === undefined ? null : new Date(Number(match[2]), m, 1);
     }
 
-    jobs.forEach((job) => {
-      const start = parseMonthYear(job.getAttribute("data-start"));
-      const end = job.getAttribute("data-end").toLowerCase() === "present"
-        ? { m: new Date().getMonth(), y: new Date().getFullYear() }
-        : parseMonthYear(job.getAttribute("data-end"));
-      if (!start || !end) return;
+    function diffParts(from, to) {
+      let months = (to.getFullYear() - from.getFullYear()) * 12 + (to.getMonth() - from.getMonth()) + 1;
+      let cursor = new Date(from.getFullYear(), from.getMonth(), from.getDate());
+      cursor.setMonth(cursor.getMonth() + months - 1);
+      const days = Math.max(0, Math.floor((to - cursor) / 86400000));
+      return { years: Math.floor(months / 12), months: months % 12, days };
+    }
 
-      let months = (end.y - start.y) * 12 + (end.m - start.m) + 1;
-      if (months < 1) return;
+    function renderJob(job) {
+      const start = parseDate(job.getAttribute("data-start"));
+      const endValue = job.getAttribute("data-end");
+      const end = endValue && endValue.toLowerCase() === "present" ? new Date() : parseDate(endValue);
+      if (!start || !end || end < start) return;
 
-      const years = Math.floor(months / 12);
-      const rem = months % 12;
-      let label = "";
-      if (years > 0) label += years + "y ";
-      if (rem > 0 || years === 0) label += rem + "mo";
-
+      const d = diffParts(start, end);
+      const parts = [];
+      if (d.years) parts.push(d.years + "y");
+      if (d.months) parts.push(d.months + "mo");
+      if (d.days || !parts.length) parts.push(d.days + "d");
       const badge = job.querySelector(".job-duration");
-      if (badge) badge.textContent = label.trim();
-    });
+      if (badge) badge.textContent = parts.join(" ");
+    }
+
+    function renderAll() { jobs.forEach(renderJob); }
+    renderAll();
+    const hasPresent = jobs.some((job) => (job.getAttribute("data-end") || "").toLowerCase() === "present");
+    if (hasPresent) {
+      const now = new Date();
+      const nextMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+      window.setTimeout(() => {
+        renderAll();
+        window.setInterval(renderAll, 86400000);
+      }, Math.max(1000, nextMidnight - now));
+    }
   })();
 
   /* ---------------- Skills filter ---------------- */

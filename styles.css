@@ -5,13 +5,13 @@
    ========================================================= */
 
 :root{
-  --bg:#F5F7FB;
+  --bg:#F6F8FC;
   --surface:#FFFFFF;
-  --ink:#0E1526;
-  --muted:#5C6B85;
-  --muted-2:#8592A8;
-  --line:#E3E8F2;
-  --line-strong:#CBD4E6;
+  --ink:#0B1324;
+  --muted:#465570;
+  --muted-2:#65748E;
+  --line:#D7DFEC;
+  --line-strong:#B9C5D8;
 
   --blue:#2454FF;
   --blue-ink:#1638B8;
@@ -21,7 +21,7 @@
   --navy-2:#101B30;
   --navy-line:#243252;
 
-  --soft:#EAF0FF;
+  --soft:#E7EEFF;
   --radius:20px;
   --radius-sm:12px;
   --shadow:0 24px 60px rgba(15,25,55,.10);
@@ -111,7 +111,7 @@ img{max-width:100%;display:block}
   display:grid;place-items:center;font-family:var(--font-mono);font-size:12px;font-weight:700;
   border:1px solid var(--navy-line);
 }
-.nav-links{display:flex;align-items:center;gap:4px;font-size:13px;font-weight:600;color:var(--muted)}
+.nav-links{display:flex;align-items:center;gap:4px;font-size:13.5px;font-weight:600;color:var(--muted)}
 .nav-links a{
   padding:8px 12px;border-radius:8px;position:relative;transition:color .18s;
 }
@@ -235,7 +235,7 @@ h1{
 h1 .accent{color:var(--blue)}
 h1 .fade{color:var(--muted-2)}
 
-.hero-copy{font-size:16px;color:var(--muted);max-width:600px}
+.hero-copy{font-size:16.5px;color:var(--muted);max-width:600px;line-height:1.72}
 .actions{display:flex;gap:11px;flex-wrap:wrap;margin:26px 0}
 .btn{
   display:inline-flex;align-items:center;gap:8px;padding:13px 18px;border-radius:11px;font-size:13px;
@@ -303,39 +303,39 @@ h1 .fade{color:var(--muted-2)}
 }
 [data-theme="dark"] .label{color:#7fa2ff}
 h2{font-family:var(--font-display);font-size:clamp(28px,3.6vw,42px);line-height:1.1;letter-spacing:-.025em;margin:0;font-weight:700}
-.section-head p{color:var(--muted);font-size:13.5px;max-width:420px;margin:0}
+.section-head p{color:var(--muted);font-size:14.5px;line-height:1.65;max-width:440px;margin:0}
 
 /* ---------- About ---------- */
 .about-head{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;padding-bottom:28px;border-bottom:1px solid var(--line);margin-bottom:28px}
 .about-copy{display:grid;grid-template-columns:1fr 1fr;gap:60px;padding-bottom:30px}
 .about-copy span{display:block;color:var(--blue);font-family:var(--font-mono);font-size:10.5px;font-weight:700;letter-spacing:.14em;margin-bottom:9px}
 [data-theme="dark"] .about-copy span{color:#7fa2ff}
-.about-copy p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.7;max-width:520px}
+.about-copy p{margin:0;color:var(--muted);font-size:15px;line-height:1.75;max-width:520px}
 
 .stats{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--surface)}
 .stat{padding:20px 20px;display:flex;align-items:baseline;gap:10px}
 .stat+.stat{border-left:1px solid var(--line)}
 .stat strong{font-family:var(--font-display);display:block;font-size:26px;letter-spacing:-.02em}
-.stat span{font-size:10.5px;color:var(--muted-2);font-family:var(--font-mono)}
+.stat span{font-size:11px;color:var(--muted-2);font-family:var(--font-mono);letter-spacing:.03em}
 
 /* ---------- Experience ---------- */
 .timeline{border-top:1px solid var(--line)}
 .job{display:grid;grid-template-columns:180px 1fr;gap:36px;padding:28px 0;border-bottom:1px solid var(--line);position:relative}
 .job::before{content:"";position:absolute;left:0;top:30px;width:3px;height:0;border-radius:3px;background:linear-gradient(180deg,var(--blue),var(--teal));transition:height .3s var(--ease)}
 .job:hover::before{height:calc(100% - 60px)}
-.job-meta{font-family:var(--font-mono);font-size:10px;color:var(--muted-2);font-weight:700;letter-spacing:.05em}
+.job-meta{font-family:var(--font-mono);font-size:11px;color:var(--muted-2);font-weight:700;letter-spacing:.05em}
 .job-meta b{display:block;color:var(--blue);margin-top:7px;letter-spacing:.02em;font-weight:700}
 [data-theme="dark"] .job-meta b{color:#7fa2ff}
 .job-duration{
   display:inline-block;margin-top:9px;background:var(--soft);color:var(--blue-ink);border-radius:999px;
-  padding:3px 8px;font-size:9.5px;font-weight:700;
+  padding:4px 9px;font-size:10px;font-weight:700;
 }
 [data-theme="dark"] .job-duration{color:#9dbaff}
 .job-title{display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap}
 .job-title h3{font-family:var(--font-display);font-size:19px;margin:0;letter-spacing:-.01em;font-weight:700}
-.job-title span{font-size:10px;color:var(--muted-2);white-space:nowrap;font-family:var(--font-mono)}
-.job ul{margin:11px 0 0;padding-left:18px;color:var(--muted);font-size:13.5px}
-.job li{margin:6px 0}
+.job-title span{font-size:10.5px;color:var(--muted-2);white-space:nowrap;font-family:var(--font-mono)}
+.job ul{margin:12px 0 0;padding-left:17px;color:var(--muted);font-size:14px;line-height:1.65}
+.job li{margin:5px 0}
 
 /* ---------- Skills ---------- */
 .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
@@ -422,3 +422,17 @@ h2{font-family:var(--font-display);font-size:clamp(28px,3.6vw,42px);line-height:
   .footer{flex-direction:column}
   .to-top{right:14px;bottom:14px}
 }
+
+
+/* ---------- Light-theme readability ---------- */
+html:not([data-theme="dark"]) .job-title h3,
+html:not([data-theme="dark"]) h2,
+html:not([data-theme="dark"]) h3 { color:var(--ink); }
+html:not([data-theme="dark"]) .job-meta b { color:#2454FF; }
+html:not([data-theme="dark"]) .job-duration { color:#1638B8; background:#E7EEFF; }
+html:not([data-theme="dark"]) .about-copy span,
+html:not([data-theme="dark"]) .label { color:#1D49D8; }
+html:not([data-theme="dark"]) .card p,
+html:not([data-theme="dark"]) .about-copy p,
+html:not([data-theme="dark"]) .section-head p,
+html:not([data-theme="dark"]) .job ul { color:#465570; }
