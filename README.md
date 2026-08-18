@@ -1,9 +1,12 @@
-# Sri Krishna Yamana — Smooth Portfolio v3
+# Sri Krishna Yamana — Portfolio v4
 
-This version is intentionally self-contained: all CSS is inside `index.html`, so GitHub Pages cannot lose the stylesheet because of a folder/path mistake.
+Polished version based on the live-page screenshots:
+- tighter vertical spacing
+- smoother section-to-section flow
+- refined experience timeline
+- compact skills cards
+- preserved HCL Tech experience naming
+- responsive layout
+- resume download
 
-Upload these files directly to the **repository root**:
-- index.html
-- Sri-Krishna-Yamana-Resume.pdf
-
-The resume download button expects the PDF next to `index.html`.
+Upload `index.html` and `Sri-Krishna-Yamana-Resume.pdf` to the repository root.
