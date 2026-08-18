@@ -1,5 +1,19 @@
-# Sri Krishna Yamana — Final Portfolio
+# Sri Krishna Yamana — Portfolio
 
-Final polished version. About section refined while preserving the existing hero, experience, skills, education, contact, navigation, HCL Tech naming, and resume download.
+Updated portfolio files.
 
-Upload `index.html` and `Sri-Krishna-Yamana-Resume.pdf` to the repository root.
+## Updates
+- Lead Engineer experience now shows **NOV 2025 — PRESENT**.
+- Experience duration is calculated automatically from the current date.
+- Experience and project counters have correct non-JavaScript fallback values (`5+` and `3`).
+- Corrected **Data Proc** to **Dataproc**.
+- Kept the resume PDF and existing site structure/assets unchanged.
+- Kept the pipeline rows/day metric stable instead of artificially increasing it.
+
+## GitHub Pages upload
+Upload all files in this folder to the repository root:
+- `index.html`
+- `script.js`
+- `styles.css`
+- `Sri-Krishna-Yamana-Resume.pdf`
+- `README.md`

@@ -251,23 +251,16 @@
     advance();
     let pipelineTimer = setInterval(advance, 2200);
 
-    // Live "rows processed" counter
-    let rows = 1284392;
-    function tickCounter() {
-      rows += Math.floor(Math.random() * 140) + 20;
-      if (counterEl) counterEl.textContent = "✓ " + rows.toLocaleString() + " rows/day";
-    }
-    if (counterEl) counterEl.textContent = "✓ " + rows.toLocaleString() + " rows/day";
-    let counterTimer = setInterval(tickCounter, 1400);
+    // Static production metric: keep the displayed figure factual and stable.
+    const rowsPerDay = 1284392;
+    if (counterEl) counterEl.textContent = "✓ " + rowsPerDay.toLocaleString() + " rows/day";
 
     // Pause work when tab isn't visible — avoids wasted cycles and battery drain
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) {
         clearInterval(pipelineTimer);
-        clearInterval(counterTimer);
       } else {
         pipelineTimer = setInterval(advance, 2200);
-        counterTimer = setInterval(tickCounter, 1400);
       }
     });
   })();
