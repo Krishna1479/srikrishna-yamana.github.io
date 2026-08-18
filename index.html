@@ -99,6 +99,35 @@ h2{font-size:clamp(31px,4vw,47px);line-height:1.1;letter-spacing:-.045em;margin:
 .job{position:relative}
 .job:before{content:"";position:absolute;left:0;top:30px;width:3px;height:0;border-radius:3px;background:var(--blue);transition:height .25s ease}
 .job:hover:before{height:calc(100% - 60px)}
+
+/* V5 About section — compact editorial layout */
+.about-section{padding-top:58px;padding-bottom:58px}
+.about-intro{display:grid;grid-template-columns:1.05fr .95fr;gap:80px;align-items:end;padding-bottom:38px;border-bottom:1px solid var(--line)}
+.about-intro h2{font-size:clamp(38px,4.7vw,58px);line-height:1.02;letter-spacing:-.055em;margin:0}
+.about-intro h2 span{color:#60718e}
+.about-lead{display:flex;gap:16px;align-items:flex-start;padding-bottom:4px}
+.about-lead-line{width:28px;height:2px;background:var(--blue);margin-top:11px;flex:0 0 auto}
+.about-lead p{margin:0;color:var(--muted);font-size:14px;line-height:1.65;max-width:460px}
+.about-content{display:grid;grid-template-columns:1fr 1fr;gap:70px;padding:34px 0 38px}
+.about-copy{max-width:570px}
+.about-kicker{color:var(--blue)!important;font-size:10px!important;font-weight:800!important;letter-spacing:.15em;margin:0 0 10px!important}
+.about-copy p:last-child{color:var(--muted);font-size:14px;line-height:1.7;margin:0}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:16px;background:#fff;overflow:hidden}
+.about-stat{padding:20px 24px;display:flex;align-items:baseline;gap:12px}
+.about-stat+.about-stat{border-left:1px solid var(--line)}
+.about-stat strong{font-size:25px;letter-spacing:-.03em}
+.about-stat span{font-size:10px;color:#8291a8}
+@media(max-width:850px){
+  .about-intro{grid-template-columns:1fr;gap:22px;padding-bottom:28px}
+  .about-content{gap:28px}
+}
+@media(max-width:560px){
+  .about-section{padding-top:48px;padding-bottom:48px}
+  .about-content{grid-template-columns:1fr;padding:28px 0}
+  .about-stats{grid-template-columns:1fr}
+  .about-stat+.about-stat{border-left:0;border-top:1px solid var(--line)}
+  .about-stat{padding:16px 18px}
+}
 </style>
 </head>
 <body>
@@ -136,10 +165,34 @@ h2{font-size:clamp(31px,4vw,47px);line-height:1.1;letter-spacing:-.045em;margin:
   </div>
 </section>
 
-<section id="about" class="section"><div class="container">
-  <div class="section-head"><div><div class="label">01 · ABOUT</div><h2>From raw data to reliable systems.</h2></div><p>Cloud data engineering focused on dependable pipelines, quality and production outcomes.</p></div>
-  <div class="about-grid"><div><p>I work across ingestion, transformation, orchestration, data quality and production troubleshooting. My experience includes large-scale processing with SQL, Python and PySpark and working with CSV, JSON, Parquet and AVRO data.</p></div><div><p>I also bring experience with data modeling, performance optimization, Git/GitHub and Agile delivery, with a focus on dependable production workflows and clear collaboration.</p></div></div>
-  <div class="stats"><div class="stat"><strong>5+</strong><span>Years of experience</span></div><div class="stat"><strong>3</strong><span>Career projects</span></div><div class="stat"><strong>GCP</strong><span>Primary cloud platform</span></div></div>
+<section id="about" class="section about-section"><div class="container">
+  <div class="about-intro">
+    <div>
+      <div class="label">01 · ABOUT</div>
+      <h2>From raw data to<br><span>reliable systems.</span></h2>
+    </div>
+    <div class="about-lead">
+      <div class="about-lead-line"></div>
+      <p>Cloud data engineering focused on dependable pipelines, quality and production outcomes.</p>
+    </div>
+  </div>
+
+  <div class="about-content">
+    <div class="about-copy">
+      <p class="about-kicker">WHAT I DO</p>
+      <p>I work across ingestion, transformation, orchestration, data quality and production troubleshooting. My experience includes large-scale processing with SQL, Python and PySpark and working with CSV, JSON, Parquet and AVRO data.</p>
+    </div>
+    <div class="about-copy">
+      <p class="about-kicker">HOW I WORK</p>
+      <p>I also bring experience with data modeling, performance optimization, Git/GitHub and Agile delivery, with a focus on dependable production workflows and clear collaboration.</p>
+    </div>
+  </div>
+
+  <div class="about-stats">
+    <div class="about-stat"><strong>5+</strong><span>Years of experience</span></div>
+    <div class="about-stat"><strong>3</strong><span>Career projects</span></div>
+    <div class="about-stat"><strong>GCP</strong><span>Primary cloud platform</span></div>
+  </div>
 </div></section>
 
 <section id="experience" class="section"><div class="container">

@@ -1,12 +1,9 @@
-# Sri Krishna Yamana — Portfolio v4
+# Sri Krishna Yamana — Portfolio v5
 
-Polished version based on the live-page screenshots:
-- tighter vertical spacing
-- smoother section-to-section flow
-- refined experience timeline
-- compact skills cards
-- preserved HCL Tech experience naming
-- responsive layout
-- resume download
-
-Upload `index.html` and `Sri-Krishna-Yamana-Resume.pdf` to the repository root.
+About section refined from the supplied screenshot:
+- stronger visual hierarchy
+- compact two-column introduction
+- labeled WHAT I DO / HOW I WORK content
+- compact stat bar
+- substantially reduced empty vertical space
+- responsive on mobile
