@@ -126,8 +126,8 @@ header .brand-name,
 }
 
 .hero h1 {
-  font-size: clamp(3.2rem, 6.2vw, 6.4rem);
-  line-height: .96;
+  font-size: clamp(3.2rem, 5.2vw, 5.25rem);
+  line-height: .98;
   letter-spacing: -.055em;
 }
 
@@ -172,6 +172,26 @@ header .brand-name,
   .about-section .section-head h2,
   #about h2 {
     font-size: clamp(2.3rem, 9vw, 3.4rem);
+  }
+}
+
+
+/* Corrected identity hierarchy: enlarge the name, not the hero headline */
+.brand-name,
+.logo-name,
+.nav-brand .brand-name,
+header .brand-name {
+  font-size: 1.28rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+}
+@media (max-width: 850px) {
+  .brand-name,
+  .logo-name,
+  .nav-brand .brand-name,
+  header .brand-name {
+    font-size: 1.12rem !important;
   }
 }
 
