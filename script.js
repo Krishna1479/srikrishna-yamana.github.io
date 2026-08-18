@@ -143,6 +143,17 @@
       }
     }
 
+    // The floating stage indicator can be collapsed independently of the
+    // experience accordions. Collapsing this control never opens/closes a section.
+    if (hud) {
+      hud.addEventListener("click", (event) => {
+        event.preventDefault();
+        const collapsed = hud.classList.toggle("is-collapsed");
+        hud.setAttribute("aria-expanded", String(!collapsed));
+        hud.setAttribute("aria-label", collapsed ? "Expand stage indicator" : "Collapse stage indicator");
+      });
+    }
+
     if ("IntersectionObserver" in window) {
       const observer = new IntersectionObserver(
         (entries) => {
@@ -276,19 +287,33 @@
         const [y, m, d] = value.split("-").map(Number);
         return new Date(y, m - 1, d);
       }
-      const match = value.trim().match(/^([A-Za-z]{3})\s+(\d{4})$/);
-      if (!match) return null;
-      const months = {jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11};
-      const m = months[match[1].toLowerCase()];
-      return m === undefined ? null : new Date(Number(match[2]), m, 1);
+      return null;
     }
 
+    // Calendar-accurate difference: e.g. Nov 1 → Aug 18 = 9mo 17d.
     function diffParts(from, to) {
-      let months = (to.getFullYear() - from.getFullYear()) * 12 + (to.getMonth() - from.getMonth()) + 1;
-      let cursor = new Date(from.getFullYear(), from.getMonth(), from.getDate());
-      cursor.setMonth(cursor.getMonth() + months - 1);
-      const days = Math.max(0, Math.floor((to - cursor) / 86400000));
-      return { years: Math.floor(months / 12), months: months % 12, days };
+      let years = to.getFullYear() - from.getFullYear();
+      let months = to.getMonth() - from.getMonth();
+      let days = to.getDate() - from.getDate();
+
+      if (days < 0) {
+        months -= 1;
+        const previousMonth = new Date(to.getFullYear(), to.getMonth(), 0);
+        days += previousMonth.getDate();
+      }
+      if (months < 0) {
+        years -= 1;
+        months += 12;
+      }
+      return { years, months, days };
+    }
+
+    function formatDuration(d) {
+      const parts = [];
+      if (d.years) parts.push(d.years + "y");
+      if (d.months) parts.push(d.months + "mo");
+      if (d.days || !parts.length) parts.push(d.days + "d");
+      return parts.join(" ");
     }
 
     function renderJob(job) {
@@ -297,17 +322,14 @@
       const end = endValue && endValue.toLowerCase() === "present" ? new Date() : parseDate(endValue);
       if (!start || !end || end < start) return;
 
-      const d = diffParts(start, end);
-      const parts = [];
-      if (d.years) parts.push(d.years + "y");
-      if (d.months) parts.push(d.months + "mo");
-      if (d.days || !parts.length) parts.push(d.days + "d");
       const badge = job.querySelector(".job-duration");
-      if (badge) badge.textContent = parts.join(" ");
+      if (badge) badge.textContent = formatDuration(diffParts(start, end));
     }
 
     function renderAll() { jobs.forEach(renderJob); }
     renderAll();
+
+    // Update current-role duration every day without requiring a refresh.
     const hasPresent = jobs.some((job) => (job.getAttribute("data-end") || "").toLowerCase() === "present");
     if (hasPresent) {
       const now = new Date();
@@ -317,6 +339,29 @@
         window.setInterval(renderAll, 86400000);
       }, Math.max(1000, nextMidnight - now));
     }
+  })();
+
+  /* ---------------- Experience: compact cards with click-to-expand details ---------------- */
+  (function experienceAccordionModule() {
+    const toggles = $$(".job-toggle");
+    if (!toggles.length) return;
+
+    function setOpen(toggle, open) {
+      const job = toggle.closest(".job");
+      const details = job ? job.querySelector(".job-details") : null;
+      if (!job || !details) return;
+
+      toggle.setAttribute("aria-expanded", String(open));
+      job.classList.toggle("is-open", open);
+      details.hidden = !open;
+    }
+
+    toggles.forEach((toggle) => {
+      toggle.addEventListener("click", () => {
+        const open = toggle.getAttribute("aria-expanded") === "true";
+        setOpen(toggle, !open);
+      });
+    });
   })();
 
   /* ---------------- Skills filter ---------------- */

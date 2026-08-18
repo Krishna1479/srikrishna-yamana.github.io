@@ -168,17 +168,27 @@ img{max-width:100%;display:block}
 /* ---------- HUD readout (desktop floating) ---------- */
 .stage-hud{
   position:fixed;left:20px;bottom:20px;z-index:40;
-  display:flex;align-items:center;gap:10px;
+  display:flex;align-items:center;justify-content:center;
   background:var(--navy);color:#cfe0ff;border:1px solid var(--navy-line);
-  border-radius:12px;padding:10px 14px;font-family:var(--font-mono);font-size:11px;
+  border-radius:14px;padding:10px 12px;font-family:var(--font-mono);font-size:11px;
   box-shadow:var(--shadow-sm);opacity:0;transform:translateY(8px);
-  transition:opacity .3s var(--ease),transform .3s var(--ease);
+  transition:opacity .3s var(--ease),transform .3s var(--ease),width .25s var(--ease),padding .25s var(--ease),border-radius .25s var(--ease);
+  cursor:pointer;
+  appearance:none;-webkit-appearance:none;
 }
 .stage-hud.is-visible{opacity:1;transform:translateY(0)}
-.stage-hud .dot{width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px rgba(14,168,148,.18)}
+.stage-hud:hover{border-color:#36507e}
+.stage-hud:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.stage-hud-content{display:flex;align-items:center;gap:10px;min-width:0;overflow:hidden;white-space:nowrap;transition:opacity .18s ease,max-width .25s ease}
+.stage-hud .dot{width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px rgba(14,168,148,.18);flex:0 0 auto}
 .stage-hud .dot.pulse{animation:pulse 2s infinite}
 .stage-hud b{color:#fff;font-weight:700}
-.stage-hud .divider{width:1px;height:12px;background:var(--navy-line)}
+.stage-hud .divider{width:1px;height:12px;background:var(--navy-line);flex:0 0 auto}
+.stage-hud-toggle{width:16px;height:16px;display:grid;place-items:center;margin-left:4px;color:#8ea0bd;font-size:15px;line-height:1;transition:transform .25s ease,color .2s ease}
+.stage-hud.is-collapsed{width:38px;height:38px;padding:0;border-radius:50%;}
+.stage-hud.is-collapsed .stage-hud-content{max-width:7px;opacity:1}
+.stage-hud.is-collapsed .stage-hud-content > :not(.dot){display:none}
+.stage-hud.is-collapsed .stage-hud-toggle{display:none}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 @media(max-width:850px){.stage-hud{display:none}}
 
@@ -436,3 +446,31 @@ html:not([data-theme="dark"]) .card p,
 html:not([data-theme="dark"]) .about-copy p,
 html:not([data-theme="dark"]) .section-head p,
 html:not([data-theme="dark"]) .job ul { color:#465570; }
+
+/* ---------- Compact experience accordion ---------- */
+.job{display:block;padding:0;}
+.job::before{top:22px;}
+.job-toggle{width:100%;display:grid;grid-template-columns:180px 1fr;gap:36px;align-items:center;padding:22px 0;border:0;background:transparent;color:inherit;text-align:left;cursor:pointer;font:inherit;}
+.job-toggle:focus-visible{outline:2px solid var(--blue);outline-offset:6px;border-radius:8px;}
+.job-meta{display:block;min-width:0;}
+.job-duration{display:inline-block;min-width:0;margin-top:8px;padding:3px 8px;font-size:9.5px;line-height:1.2;letter-spacing:.01em;}
+.job-summary{display:flex;align-items:center;justify-content:space-between;gap:20px;min-width:0;}
+.job-title{display:flex;justify-content:space-between;align-items:baseline;gap:20px;min-width:0;flex:1;}
+.job-title strong{font-family:var(--font-display);font-size:18px;letter-spacing:-.01em;font-weight:700;color:var(--ink);}
+.job-title span{font-size:10.5px;color:var(--muted-2);white-space:nowrap;font-family:var(--font-mono);}
+.job-chevron{width:27px;height:27px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;font-family:var(--font-mono);font-size:16px;color:var(--muted);flex:0 0 auto;transition:transform .2s ease,background .2s ease,color .2s ease,border-color .2s ease;}
+.job.is-open .job-chevron{transform:rotate(45deg);background:var(--soft);color:var(--blue);border-color:var(--blue);}
+.job-details{padding:0 0 22px 216px;}
+.job-details ul{margin:0;padding-left:17px;color:var(--muted);font-size:13px;line-height:1.55;}
+.job-details li{margin:4px 0;}
+.job.is-open::before{height:calc(100% - 44px);}
+.job:not(.is-open):hover::before{height:calc(100% - 44px);}
+
+@media (max-width: 720px){
+  .job-toggle{grid-template-columns:1fr;gap:8px;padding:20px 0;}
+  .job-summary{align-items:center;}
+  .job-title{padding-right:4px;}
+  .job-details{padding:0 0 20px 0;}
+  .job-title strong{font-size:17px;}
+  .job-title span{font-size:9.5px;}
+}
