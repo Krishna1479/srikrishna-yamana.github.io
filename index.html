@@ -1,151 +1,174 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Sri Krishna Yamana — Cloud Data Engineer specializing in Google Cloud, BigQuery, Airflow, SQL and Python.">
-  <title>Sri Krishna Yamana | Cloud Data Engineer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Sri Krishna Yamana — Cloud Data Engineer">
+<title>Sri Krishna Yamana — Cloud Data Engineer</title>
+<style>
+:root{
+  --bg:#f6f8fc;--paper:#fff;--ink:#111b32;--muted:#687892;--line:#e4e9f2;
+  --blue:#2450df;--blue2:#3c68ed;--navy:#0c1629;--soft:#edf3ff;
+  --shadow:0 24px 70px rgba(21,38,72,.10);--radius:22px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+.container{width:min(1120px,calc(100% - 40px));margin:auto}
+.nav{height:72px;background:rgba(255,255,255,.94);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50;backdrop-filter:blur(18px)}
+.nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:11px;font-weight:800;font-size:15px}
+.logo-mark{width:38px;height:38px;border-radius:11px;background:var(--blue);color:#fff;display:grid;place-items:center;font-size:13px}
+.nav-links{display:flex;align-items:center;gap:26px;font-size:13px;font-weight:700;color:#56657d}
+.nav-links a:hover{color:var(--blue)}
+.nav-btn{background:var(--blue);color:#fff!important;padding:10px 15px;border-radius:10px}
+.mobile-btn{display:none;border:0;background:none;font-size:22px}
+.hero{padding:94px 0 88px;display:grid;grid-template-columns:1.06fr .94fr;gap:70px;align-items:center}
+.kicker{display:flex;align-items:center;gap:9px;color:#3157c9;font-size:11px;font-weight:800;letter-spacing:.13em;margin-bottom:22px}
+.kicker:before{content:"";width:24px;height:2px;background:var(--blue)}
+.status{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #dfe6f0;border-radius:999px;padding:7px 11px;font-size:11px;font-weight:700;color:#61728d;margin-bottom:24px}
+.status i{width:7px;height:7px;border-radius:50%;background:#23a56f;box-shadow:0 0 0 4px #e7f7ef}
+h1{font-size:clamp(45px,6.1vw,70px);line-height:1.02;letter-spacing:-.055em;margin:0 0 24px;max-width:720px}
+h1 span{color:#5d6e89}
+.hero-copy{font-size:16px;color:var(--muted);max-width:690px}
+.actions{display:flex;gap:11px;flex-wrap:wrap;margin:28px 0}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 17px;border-radius:11px;font-size:13px;font-weight:800;border:1px solid var(--line);transition:.2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 12px 28px rgba(36,80,223,.20)}
+.btn-secondary{background:#fff}
+.stack{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}
+.stack span{background:var(--soft);color:#4963a1;border-radius:999px;padding:5px 9px;font-size:10px;font-weight:800}
+.visual{background:var(--navy);border-radius:26px;padding:22px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.visual:after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:#2450df22;right:-80px;top:-80px}
+.visual-top{display:flex;justify-content:space-between;color:#aab8cc;font-size:10px;font-weight:800;letter-spacing:.08em;position:relative;z-index:1}
+.visual-top strong{color:#e9effa}
+.flow{margin:48px 0 28px;position:relative}
+.flow-line{position:absolute;left:25px;right:25px;top:35px;height:2px;background:#2a3a56}
+.flow-line:after{content:"";position:absolute;left:0;top:0;width:62%;height:2px;background:#4e79ee}
+.flow-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;position:relative}
+.flow-node{background:#111f37;border:1px solid #2b3a55;border-radius:15px;padding:15px 12px;min-height:122px}
+.flow-node.highlight{border-color:#456ee3;background:#14264c;box-shadow:0 0 0 1px #456ee333}
+.flow-icon{width:30px;height:30px;border-radius:9px;background:#203252;color:#86a5ff;display:grid;place-items:center;font-size:11px;font-weight:800;margin-bottom:13px}
+.flow-node strong{display:block;color:#f1f5fb;font-size:12px}
+.flow-node small{display:block;color:#8292ab;font-size:9px;margin-top:5px}
+.visual-bottom{border-top:1px solid #273650;padding-top:16px;color:#8493aa;font-size:10px;display:flex;align-items:center;gap:7px}
+.visual-bottom strong{color:#dfe8f7}.tick{margin-left:auto;color:#57d89b}
+.section{border-top:1px solid var(--line);padding:92px 0}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:35px;margin-bottom:40px}
+.label{font-size:10px;color:var(--blue);font-weight:800;letter-spacing:.15em;margin-bottom:11px}
+h2{font-size:clamp(31px,4vw,47px);line-height:1.1;letter-spacing:-.045em;margin:0}
+.section-head p{color:var(--muted);font-size:13px;max-width:430px;margin:0}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px}
+.about-grid p{color:var(--muted);font-size:15px;margin:0 0 16px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:45px;border-top:1px solid var(--line)}
+.stat{padding:22px 18px 0 0;border-right:1px solid var(--line)}
+.stat+.stat{padding-left:18px}
+.stat strong{display:block;font-size:28px;letter-spacing:-.03em}
+.stat span{font-size:10px;color:#7c8ba0}
+.timeline{border-top:1px solid var(--line)}
+.job{display:grid;grid-template-columns:190px 1fr;gap:45px;padding:35px 0;border-bottom:1px solid var(--line)}
+.job-meta{font-size:10px;color:#7d8ba0;font-weight:800;letter-spacing:.07em}
+.job-meta b{display:block;color:var(--blue);margin-top:7px;letter-spacing:.02em}
+.job-title{display:flex;justify-content:space-between;align-items:baseline;gap:20px}
+.job-title h3{font-size:21px;margin:0;letter-spacing:-.02em}
+.job-title span{font-size:10px;color:#8a97a8;white-space:nowrap}
+.job ul{margin:14px 0 0;padding-left:18px;color:#66768f;font-size:13px}
+.job li{margin:6px 0}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:23px;min-height:205px;transition:.22s}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.card-icon{width:39px;height:39px;border-radius:10px;background:var(--soft);color:var(--blue);display:grid;place-items:center;font-weight:800;margin-bottom:17px}
+.card h3{font-size:16px;margin:0 0 7px}.card p{font-size:12px;color:var(--muted);margin:0 0 16px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}.tags span{background:#f0f4fb;color:#53698f;border-radius:999px;padding:4px 7px;font-size:9px;font-weight:800}
+.edu{background:var(--navy);color:#fff;border-radius:24px;padding:34px 38px;display:flex;justify-content:space-between;align-items:center}
+.edu .label{color:#8ba7ff}.edu h2{font-size:30px}.edu p{margin:4px 0 0;color:#9eacc1;font-size:13px}.edu-year{color:#8ca7ff;font-size:10px;font-weight:800;letter-spacing:.12em}
+.edu-badge{width:62px;height:62px;border:1px solid #31425e;border-radius:16px;display:grid;place-items:center;color:#9bb1f2;font-size:12px;font-weight:800}
+.contact{padding-bottom:82px}.contact-box{background:var(--blue);color:#fff;border-radius:25px;padding:52px;display:grid;grid-template-columns:1fr .75fr;gap:60px}
+.contact-box .label{color:#c2d1ff}.contact-box h2{font-size:44px}.contact-box p{color:#d9e2ff;font-size:14px;max-width:500px}
+.contact-links{display:flex;flex-direction:column;justify-content:center}.contact-links a{padding:14px 0;border-bottom:1px solid #ffffff40;font-size:13px;font-weight:700}.contact-links a span{float:right}.resume{display:inline-block;border:0!important;color:#dce5ff;font-size:11px!important;margin-top:7px}
+.footer{border-top:1px solid var(--line);padding:24px 0 34px;display:flex;justify-content:space-between;color:#8794a7;font-size:10px}
+@media(max-width:850px){.nav-links{display:none}.mobile-btn{display:block}.hero{grid-template-columns:1fr;gap:35px;padding-top:70px}.section-head{display:block}.section-head p{margin-top:14px}.about-grid{grid-template-columns:1fr;gap:20px}.cards{grid-template-columns:1fr 1fr}.contact-box{grid-template-columns:1fr;gap:20px;padding:38px 28px}.job{grid-template-columns:1fr;gap:9px}}
+@media(max-width:560px){.container{width:calc(100% - 28px)}.hero{padding:58px 0 65px}h1{font-size:43px}.flow-grid{grid-template-columns:1fr}.flow-line{display:none}.cards{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.stat,.stat+.stat{border-right:0;border-bottom:1px solid var(--line);padding:16px 0}.contact-box h2{font-size:34px}.edu{padding:28px}.footer{flex-direction:column;gap:7px}}
+</style>
 </head>
 <body>
-  <div class="topline"></div>
-  <header class="nav">
-    <a class="brand" href="#home"><span class="brand-mark">SK</span><span>Sri Krishna Yamana</span></a>
+<header class="nav">
+  <div class="nav-inner container">
+    <a class="logo" href="#home"><span class="logo-mark">SK</span><span>Sri Krishna Yamana</span></a>
     <nav class="nav-links">
-      <a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Expertise</a>
-      <a href="#education">Education</a><a class="nav-cta" href="#contact">Let's talk <span>↗</span></a>
+      <a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#education">Education</a><a class="nav-btn" href="#contact">Contact ↗</a>
     </nav>
-    <button class="menu" aria-label="Open menu">☰</button>
-  </header>
+    <button class="mobile-btn" aria-label="Menu">☰</button>
+  </div>
+</header>
 
-  <main>
-    <section id="home" class="hero shell">
-      <div class="hero-left">
-        <div class="availability"><span class="pulse"></span> Open to opportunities</div>
-        <p class="eyebrow">CLOUD DATA ENGINEER · GOOGLE CLOUD</p>
-        <h1>Engineering data pipelines <em>built to scale.</em></h1>
-        <p class="hero-text">Data Engineer with 5+ years of experience designing and building scalable data pipelines on Google Cloud Platform, with hands-on expertise across BigQuery, GCS, Airflow, SQL and Python.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#experience">Explore my work <span>↓</span></a>
-          <a class="btn btn-light" href="Sri-Krishna-Yamana-Resume.pdf" download>Download resume <span>↓</span></a>
-        </div>
-        <div class="trust-row">
-          <span>GCP</span><span>BIGQUERY</span><span>AIRFLOW</span><span>PYTHON</span><span>SQL</span>
-        </div>
+<main>
+<section id="home" class="hero container">
+  <div>
+    <div class="status"><i></i> Open to opportunities</div>
+    <div class="kicker">CLOUD DATA ENGINEER · GOOGLE CLOUD</div>
+    <h1>Building reliable <span>data pipelines</span> for real-world systems.</h1>
+    <p class="hero-copy">Data Engineer with 5+ years of experience designing and building scalable pipelines on Google Cloud Platform, with expertise in BigQuery, GCS, Airflow, SQL and Python.</p>
+    <div class="actions"><a class="btn btn-primary" href="#experience">View experience →</a><a class="btn btn-secondary" href="Sri-Krishna-Yamana-Resume.pdf" download>Download resume ↓</a></div>
+    <div class="stack"><span>GCP</span><span>BIGQUERY</span><span>AIRFLOW</span><span>PYTHON</span><span>SQL</span></div>
+  </div>
+  <div class="visual">
+    <div class="visual-top"><span><strong>DATA PIPELINE</strong> · PRODUCTION FLOW</span><span>GCP</span></div>
+    <div class="flow">
+      <div class="flow-line"></div>
+      <div class="flow-grid">
+        <div class="flow-node"><div class="flow-icon">01</div><strong>Sources</strong><small>CSV · JSON · AVRO</small></div>
+        <div class="flow-node highlight"><div class="flow-icon">02</div><strong>Transform</strong><small>Dataflow · Spark</small></div>
+        <div class="flow-node"><div class="flow-icon">03</div><strong>Warehouse</strong><small>BigQuery</small></div>
       </div>
+    </div>
+    <div class="visual-bottom"><span>Orchestration</span><strong>Apache Airflow</strong><span class="tick">✓ Reliable</span></div>
+  </div>
+</section>
 
-      <div class="pipeline-card">
-        <div class="card-head"><span class="live"><i></i> PIPELINE FLOW</span><span>GCP</span></div>
-        <div class="pipeline">
-          <div class="node"><b>01</b><strong>Sources</strong><small>CSV · JSON · AVRO</small></div>
-          <div class="connector"><span></span></div>
-          <div class="node active"><b>02</b><strong>Transform</strong><small>Dataflow · Spark</small></div>
-          <div class="connector"><span></span></div>
-          <div class="node"><b>03</b><strong>Warehouse</strong><small>BigQuery</small></div>
-        </div>
-        <div class="pipeline-footer"><span>Orchestrated with</span><strong>Apache Airflow</strong><span class="check">✓</span></div>
-      </div>
-    </section>
+<section id="about" class="section"><div class="container">
+  <div class="section-head"><div><div class="label">01 · ABOUT</div><h2>From raw data to reliable systems.</h2></div><p>Cloud data engineering focused on dependable pipelines, quality and production outcomes.</p></div>
+  <div class="about-grid"><div><p>I work across ingestion, transformation, orchestration, data quality and production troubleshooting. My experience includes large-scale processing with SQL, Python and PySpark and working with CSV, JSON, Parquet and AVRO data.</p></div><div><p>I also bring experience with data modeling, performance optimization, Git/GitHub and Agile delivery, with a focus on dependable production workflows and clear collaboration.</p></div></div>
+  <div class="stats"><div class="stat"><strong>5+</strong><span>Years of experience</span></div><div class="stat"><strong>3</strong><span>Career projects</span></div><div class="stat"><strong>GCP</strong><span>Primary cloud platform</span></div></div>
+</div></section>
 
-    <section id="about" class="section shell about">
-      <div class="section-label"><span>01</span> ABOUT</div>
-      <div class="about-main">
-        <h2>From raw data to reliable systems.</h2>
-        <div class="about-copy">
-          <p>I work across ingestion, transformation, orchestration, data quality and production troubleshooting. My experience includes large-scale processing with SQL, Python and PySpark and working with CSV, JSON, Parquet and AVRO data.</p>
-          <p>I also bring hands-on experience with data modeling, performance optimization, Git/GitHub and Agile delivery, with a focus on dependable production workflows and clear collaboration.</p>
-        </div>
-      </div>
-      <div class="stats">
-        <div><strong>5+</strong><span>Years experience</span></div>
-        <div><strong>3</strong><span>Career projects</span></div>
-        <div><strong>GCP</strong><span>Cloud platform</span></div>
-      </div>
-    </section>
+<section id="experience" class="section"><div class="container">
+  <div class="section-head"><div><div class="label">02 · EXPERIENCE</div><h2>Professional experience</h2></div><p>Hands-on work across GCP pipelines, data integration, databases and production support.</p></div>
+  <div class="timeline">
+    <article class="job"><div class="job-meta"><span>NOV 2025 — MAR 2026</span><b>HCL</b></div><div><div class="job-title"><h3>Lead Engineer</h3><span>Project #3</span></div><ul><li>Managed and monitored end-to-end BigQuery pipelines across RZ, PZ and fact layers.</li><li>Performed validation, reconciliation and RCA for production issues and pipeline failures.</li><li>Automated data-quality checks and supported ingestion workflows using Apache Airflow.</li><li>Investigated missing or delayed fact-table data and coordinated upstream reprocessing.</li><li>Collaborated with cross-functional teams and maintained pipeline and troubleshooting documentation.</li></ul></div></article>
+    <article class="job"><div class="job-meta"><span>NOV 2023 — JAN 2025</span><b>HCL</b></div><div><div class="job-title"><h3>Senior Software Engineer</h3><span>Project #2</span></div><ul><li>Built data-transfer scripts from GCS to BigQuery and implemented BigQuery partitioning strategies.</li><li>Designed GCP data-integration solutions using Cloud Storage, Dataflow, Pub/Sub and BigQuery.</li><li>Worked with Apache Beam, Apache Spark and Google Cloud Dataflow for large-scale processing.</li><li>Handled CSV, JSON and AVRO formats and created authorized BigQuery views for controlled access.</li><li>Used GitHub for source control and maintained documentation for pipelines, models and architecture.</li></ul></div></article>
+    <article class="job"><div class="job-meta"><span>AUG 2019 — OCT 2023</span><b>WVAUTOMATIONPRIVATE LIMITED</b></div><div><div class="job-title"><h3>Software Engineer</h3><span>Project #1</span></div><ul><li>Crafted complex SQL and optimized tables, indexes, constraints and query execution plans.</li><li>Created logical and physical data models aligned with business requirements.</li><li>Developed stored procedures, user-defined functions and triggers for database business logic.</li><li>Contributed to GCP architecture using BigQuery, GCS, Dataflow and Airflow.</li><li>Developed Python automation for data processing, cleansing and transformation.</li></ul></div></article>
+  </div>
+</div></section>
 
-    <section id="experience" class="section shell">
-      <div class="section-label"><span>02</span> EXPERIENCE</div>
-      <div class="section-title-row"><h2>Production experience</h2><p>Data engineering across cloud pipelines, analytics and database systems.</p></div>
+<section id="skills" class="section"><div class="container">
+  <div class="section-head"><div><div class="label">03 · SKILLS</div><h2>Technical toolkit</h2></div><p>The core technologies and practices reflected in my professional experience.</p></div>
+  <div class="cards">
+    <div class="card"><div class="card-icon">☁</div><h3>Google Cloud</h3><p>GCS, BigQuery, Airflow, Data Proc, Dataflow and Pub/Sub.</p><div class="tags"><span>GCS</span><span>BigQuery</span><span>Dataflow</span></div></div>
+    <div class="card"><div class="card-icon">⌘</div><h3>Programming</h3><p>SQL, Python and PySpark for data processing, automation and transformation.</p><div class="tags"><span>SQL</span><span>Python</span><span>PySpark</span></div></div>
+    <div class="card"><div class="card-icon">◇</div><h3>Data Engineering</h3><p>Ingestion, orchestration, data quality, validation, reconciliation and RCA.</p><div class="tags"><span>Airflow</span><span>Quality</span><span>RCA</span></div></div>
+    <div class="card"><div class="card-icon">▦</div><h3>Big Data Processing</h3><p>Apache Beam, Apache Spark and Google Cloud Dataflow.</p><div class="tags"><span>Beam</span><span>Spark</span><span>Dataflow</span></div></div>
+    <div class="card"><div class="card-icon">◫</div><h3>Engineering Tools</h3><p>Git, GitHub, JIRA, Confluence and Agile delivery practices.</p><div class="tags"><span>Git</span><span>GitHub</span><span>Agile</span></div></div>
+    <div class="card"><div class="card-icon">◎</div><h3>Formats & Platforms</h3><p>CSV, JSON, Parquet, AVRO, plus familiarity with Snowflake, Kafka and Hadoop.</p><div class="tags"><span>CSV</span><span>JSON</span><span>AVRO</span></div></div>
+  </div>
+</div></section>
 
-      <div class="experience-list">
-        <article class="exp">
-          <div class="exp-meta"><span>2025 — 2026</span><b>HCL</b></div>
-          <div class="exp-content">
-            <div class="role-line"><h3>Lead Engineer</h3><span>Nov 2025 — Mar 2026</span></div>
-            <ul>
-              <li>Managed and monitored end-to-end BigQuery pipelines across RZ, PZ and fact layers.</li>
-              <li>Performed validation, reconciliation and root-cause analysis for production issues and pipeline failures.</li>
-              <li>Automated data-quality checks and supported ingestion workflows using Apache Airflow.</li>
-              <li>Investigated missing or delayed fact-table data and coordinated upstream reprocessing.</li>
-              <li>Maintained pipeline, data-flow and troubleshooting documentation during KT and transition.</li>
-            </ul>
-          </div>
-        </article>
+<section id="education" class="section"><div class="container">
+  <div class="section-head"><div><div class="label">04 · EDUCATION</div><h2>Academic background</h2></div></div>
+  <div class="edu"><div><div class="edu-year">2019</div><h2>B.Sc. Computers</h2><p>Krishna University · Vijayawada</p></div><div class="edu-badge">B.Sc.</div></div>
+</div></section>
 
-        <article class="exp">
-          <div class="exp-meta"><span>2023 — 2025</span><b>HCL</b></div>
-          <div class="exp-content">
-            <div class="role-line"><h3>Senior Software Engineer</h3><span>Nov 2023 — Jan 2025</span></div>
-            <ul>
-              <li>Built data-transfer scripts from Google Cloud Storage to BigQuery and implemented BigQuery partitioning strategies.</li>
-              <li>Designed GCP data-integration solutions using Cloud Storage, Dataflow, Pub/Sub and BigQuery.</li>
-              <li>Worked with Apache Beam, Apache Spark and Google Cloud Dataflow for large-scale processing.</li>
-              <li>Handled CSV, JSON and AVRO formats and created authorized BigQuery views for controlled access.</li>
-              <li>Used GitHub for source control and maintained documentation for pipelines, models and architecture.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="exp">
-          <div class="exp-meta"><span>2019 — 2023</span><b>WVAUTOMATIONPRIVATE LIMITED</b></div>
-          <div class="exp-content">
-            <div class="role-line"><h3>Software Engineer</h3><span>Aug 2019 — Oct 2023</span></div>
-            <ul>
-              <li>Crafted complex SQL and optimized tables, indexes, constraints and query execution plans.</li>
-              <li>Created logical and physical data models aligned with business requirements.</li>
-              <li>Developed stored procedures, user-defined functions and triggers for database business logic.</li>
-              <li>Contributed to GCP big-data architecture using BigQuery, GCS, Dataflow and Airflow.</li>
-              <li>Developed Python automation for data processing, cleansing and transformation.</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="projects" class="section shell expertise">
-      <div class="section-label"><span>03</span> EXPERTISE</div>
-      <div class="section-title-row"><h2>Technical toolkit</h2><p>The technologies and practices reflected in my professional experience.</p></div>
-      <div class="tool-grid">
-        <div class="tool-card featured"><div class="tool-icon">☁</div><h3>Google Cloud</h3><p>GCS, BigQuery, Airflow, Data Proc, Dataflow and Pub/Sub.</p><div class="tags"><span>GCS</span><span>BigQuery</span><span>Dataflow</span></div></div>
-        <div class="tool-card"><div class="tool-icon">⌘</div><h3>Programming</h3><p>SQL, Python and PySpark for data processing, automation and transformation.</p><div class="tags"><span>SQL</span><span>Python</span><span>PySpark</span></div></div>
-        <div class="tool-card"><div class="tool-icon">◇</div><h3>Data Engineering</h3><p>Ingestion, orchestration, data quality, validation, reconciliation and RCA.</p><div class="tags"><span>Airflow</span><span>Quality</span><span>RCA</span></div></div>
-        <div class="tool-card"><div class="tool-icon">▦</div><h3>Processing</h3><p>Apache Beam, Apache Spark and Google Cloud Dataflow for large-scale processing.</p><div class="tags"><span>Beam</span><span>Spark</span><span>Dataflow</span></div></div>
-        <div class="tool-card"><div class="tool-icon">◫</div><h3>Engineering Tools</h3><p>Git, GitHub, JIRA, Confluence and Agile delivery practices.</p><div class="tags"><span>Git</span><span>GitHub</span><span>Agile</span></div></div>
-        <div class="tool-card"><div class="tool-icon">◎</div><h3>Data Formats</h3><p>CSV, JSON, Parquet and AVRO, plus familiarity with Snowflake, Kafka and Hadoop.</p><div class="tags"><span>CSV</span><span>JSON</span><span>AVRO</span></div></div>
-      </div>
-    </section>
-
-    <section id="education" class="section shell education">
-      <div class="section-label"><span>04</span> EDUCATION</div>
-      <div class="edu-card"><div><span class="edu-year">2019</span><h2>B.Sc. Computers</h2><p>Krishna University · Vijayawada</p></div><div class="edu-mark">BSc</div></div>
-    </section>
-
-    <section id="contact" class="contact shell">
-      <div class="contact-inner">
-        <div><p class="eyebrow">05 · CONTACT</p><h2>Let's build something reliable.</h2><p>I'm open to opportunities where cloud data engineering can make a meaningful impact.</p></div>
-        <div class="contact-actions">
-          <a class="contact-link primary-link" href="mailto:yamana.srikrishna14@gmail.com">yamana.srikrishna14@gmail.com <span>↗</span></a>
-          <a class="contact-link" href="tel:+918688254158">+91 86882 54158 <span>↗</span></a>
-          <a class="resume-link" href="Sri-Krishna-Yamana-Resume.pdf" download>Download my resume ↓</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer shell"><span>© <span id="year"></span> Sri Krishna Yamana</span><span>Cloud Data Engineer · Google Cloud</span></footer>
-  <script src="script.js"></script>
+<section id="contact" class="contact"><div class="container"><div class="contact-box">
+  <div><div class="label">05 · CONTACT</div><h2>Let's build something reliable.</h2><p>Open to opportunities where cloud data engineering can make a meaningful impact.</p></div>
+  <div class="contact-links"><a href="mailto:yamana.srikrishna14@gmail.com">yamana.srikrishna14@gmail.com <span>↗</span></a><a href="tel:+918688254158">+91 86882 54158 <span>↗</span></a><a class="resume" href="Sri-Krishna-Yamana-Resume.pdf" download>Download my resume ↓</a></div>
+</div></div></section>
+</main>
+<footer class="footer container"><span>© <span id="year"></span> Sri Krishna Yamana</span><span>Cloud Data Engineer · Google Cloud</span></footer>
+<script>
+document.getElementById("year").textContent=new Date().getFullYear();
+const btn=document.querySelector(".mobile-btn"),nav=document.querySelector(".nav-links");
+btn.addEventListener("click",()=>{nav.style.display=nav.style.display==="flex"?"":"flex";nav.style.position="absolute";nav.style.top="72px";nav.style.left="14px";nav.style.right="14px";nav.style.padding="18px";nav.style.background="#fff";nav.style.border="1px solid #e4e9f2";nav.style.borderRadius="14px";nav.style.flexDirection="column";nav.style.alignItems="stretch"});
+</script>
 </body>
 </html>

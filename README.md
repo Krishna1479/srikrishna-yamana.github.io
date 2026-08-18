@@ -1,14 +1,9 @@
-# Sri Krishna Yamana — Polished Portfolio v2
+# Sri Krishna Yamana — Smooth Portfolio v3
 
-A polished, responsive Cloud Data Engineer portfolio built from the supplied resume.
+This version is intentionally self-contained: all CSS is inside `index.html`, so GitHub Pages cannot lose the stylesheet because of a folder/path mistake.
 
-## Files
-- `index.html`
-- `styles.css`
-- `script.js`
-- `Sri-Krishna-Yamana-Resume.pdf`
+Upload these files directly to the **repository root**:
+- index.html
+- Sri-Krishna-Yamana-Resume.pdf
 
-## Publish
-Upload all files to the **root of the GitHub Pages repository**, not inside a folder.
-
-The resume download button expects `Sri-Krishna-Yamana-Resume.pdf` to be in the same root folder as `index.html`.
+The resume download button expects the PDF next to `index.html`.
