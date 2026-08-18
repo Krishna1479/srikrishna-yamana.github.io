@@ -1,9 +1,5 @@
-# Sri Krishna Yamana — Portfolio v5
+# Sri Krishna Yamana — Final Portfolio
 
-About section refined from the supplied screenshot:
-- stronger visual hierarchy
-- compact two-column introduction
-- labeled WHAT I DO / HOW I WORK content
-- compact stat bar
-- substantially reduced empty vertical space
-- responsive on mobile
+Final polished version. About section refined while preserving the existing hero, experience, skills, education, contact, navigation, HCL Tech naming, and resume download.
+
+Upload `index.html` and `Sri-Krishna-Yamana-Resume.pdf` to the repository root.
